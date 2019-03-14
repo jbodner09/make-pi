@@ -1,6 +1,6 @@
 # make-pi
 
-A school project for how to calculate pi, used mainly as a way to celebrate Pi Day.  The code presented here is a journey through my education, in honor of the 10th anniversary of me learning how to code (and 10 years of cramming 10,000 words into Facebook posts that are too long for anybody to actually read).  It's presented in all its horrifically architected, bug-filled glory, and shouldn't ever be downloaded or compiled.  I mean, it should actually compile, but really, please don't.  
+The code presented here is a journey through my education, in honor of the 10th anniversary of me learning how to code (and 10 years of cramming 10,000 words into Facebook posts that are too long for anybody to actually read).  It's presented in all its horrifically architected, bug-filled glory, and shouldn't ever be downloaded or compiled.  I mean, it should actually compile, but really, please don't.  
 
 ## The Pi Manifesto
 
