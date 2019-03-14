@@ -1,4 +1,4 @@
-#Version 5: Never saw this one coming!, in `make_pi_5.cu`
+# Version 5: Never saw this one coming!, in `make_pi_5.cu`
 
 You know what's more parallel than our processors nowadays?  Graphics cards!  So I figured, I have a discrete graphics card, why not write a version of the code for it?  It's got hundreds of little processors it can use compared to the four measly cores of my main processor, and it'll be fun learning to write code for a massively parallel architecture like all those big scientists do for curing cancer and stuff.  Now, we're really venturing into the territory of how they would do this in real life.  The interesting thing about graphics cards is that they really aren't just for graphics anymore.  They've got their own C-like language (many of them, in fact), and can really do just about anything a regular processor can, except usually faster.  
 
@@ -16,6 +16,6 @@ For a larger number of iterations... the GPU version is still slower.  This may 
 
 It's also worth noting that while this code will run on any GPU supporting CUDA 2.0+, its performance will need to be tuned to match the resources available.  The number of threads to use is held constant to be equal to the number of cores available on the particular architecture, which will change when running it on another GPU.  As the number of iterations increases, the amount of work each thread does increases, but to minimize switching, the number of threads still stays constant.  
 
-##Version 5.1: Visual Studio helps me maintain better coding conventions, in `kernel.cu`
+## Version 5.1: Visual Studio helps me maintain better coding conventions, in `kernel.cu`
 
 The Windows version is functionally identical in this case.  Well, you'll have to remove the reference to unistd.h, but it wasn't used in the Linux version anyway.  
