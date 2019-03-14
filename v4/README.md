@@ -1,4 +1,4 @@
-#Version 4: Maybe a little *too* excited, in `make_pi_4.c`
+# Version 4: Maybe a little *too* excited, in `make_pi_4.c`
 
 You know, writing your own math library is actually pretty tough.  After structuring my code in the last update to use a big number library, I figured I could pretty much use it verbatim and just drop in my own library's particulars.  That almost worked.  Almost.  I structured the names and signatures of my math functions to match GMP's.  In fact, besides not having their nice print function and being able to now specify the exact number of digits to use in my precision, the only real difference was that my functions weren't quite as user-friendly.  Specifically, I couldn't use the same operand as both the result and an input, which meant more temporary variables to hold results.  Also, I had to manually reset each variable before storing something new in it again.  So, a single operation turned into a set of operation-reset destination-move-reset temp block.  But other than those few gotcha's, writing the library wasn't too difficult.  
 
@@ -28,7 +28,7 @@ The comparison is straightforward:  look at the leftmost digit, and it'll tell y
 
 Will this be the final update?
 
-##Version 4.1: No, in `WinPi2.cpp`
+## Version 4.1: No, in `WinPi2.cpp`
 
 Oh. My. God.  That port to Windows was such a ridiculous amount of work.  As it turns out, all the work stemmed from the bugs that still lingered in the code.  Let me explain.  On Linux, everything worked fine the way I had it.  Unfortunately, the way I had it left me accessing tons of arrays outside of their bounds.  Obviously that's bad, but for some reason it let me!  Only one of the out-of-bounds accesses was a write, which Linux just ignored, and it didn't make my result wrong enough for me to notice.  So, after changing the few things I needed to in order to use the Windows threading APIs, I thought I could just compile it and it would work.  It didn't.  Instead, it crashed.  
 
@@ -40,7 +40,7 @@ So, I go through, and I actually find a bunch of places that are either directly
 
 Well, it turns out that one of the checks I had for finding bad array accesses was actually using some of those newly-unsigned integers I had fixed!  In Linux, they were just implied to be signed, and the check ran fine (not to mention, it ran fine before I even added the check).  But, when I removed the sign for Windows, the check no longer triggered, and so even though I had found a bad spot, I had inadvertently undone the fix with another fix!  Finding that took... a lot longer than I had hoped.  After undoing that, along with another fix that was actually bogus, I finally got the port working, and it turns out that it run WAAAAAY faster on my awesome computer than on the school's Linux servers.  I still haven't tried it on the Supercomputer, and I may never get to, but the fact that I can now at least do it on my own machines is a very important step.  And even though there are probably still tons of bugs in it, I'll probably never touch the code again, except to post it each year.  
 
-##Version 4.2: How did I have this much free time?, in `Program.cs`
+## Version 4.2: How did I have this much free time?, in `Program.cs`
 
 You know, after porting to Windows gave me so much trouble, I figured porting to C\# would be about as much of a hassle.  I wasn't too far off.  And it's not because figuring out how to transform all my array magic and pointer stuff into managed code is difficult.  It's because C's native code is so lenient about out-of-bounds array access.  C's explicit contract is, "You will stay within the bounds of an array.  If you don't, ANYTHING CAN HAPPEN.  We literally leave it up to each individual implementation on each individual platform to care whether or not you meet this requirement and what happens if you don't".  
 
@@ -48,6 +48,6 @@ Managed code is not as friendly.  They have absolutely no leniency when it comes
 
 Overall, since I found most of the bad array accesses when porting to Windows, most of the hard work was already done.  That stupid signed-versus-unsigned thing still got me, though.  
 
-##Version 4.3: Well, why not?, in `Program.java`, `Calculation.java`, and `BigNum.java`
+## Version 4.3: Well, why not?, in `Program.java`, `Calculation.java`, and `BigNum.java`
 
 This time, getting from C\# to Java was a piece of cake.  Of... coffee cake???
