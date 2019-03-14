@@ -1,4 +1,4 @@
-#Version 6: REALLY. ARE YOU KIDDING ME???, in `make_pi_6.c`
+# Version 6: REALLY. ARE YOU KIDDING ME???, in `make_pi_6.c`
 
 So, performance on the GPU was... less spectacular than expected.  But!  While I still have access to a supercomputer, there is one more thing I wanted to try.  Since single-threaded performance is still so important, and GPUs actually have really poor single-threaded performance, the obvious option is to just use more CPUs!  I only have a single computer, but the supercomputer can totally hook together multiple CPUs to calculate a single program.  
 
