@@ -1,4 +1,4 @@
-#Version 3: I got really excited, in `make_pi_3.c`
+# Version 3: I got really excited, in `make_pi_3.c`
 
 Okay, I couldn't wait, so I found an external library that provides enhanced precision calculation.  It's actually really cool, because you can use as many digits as you'd like.  The only real downside is that it runs WAY slower.  Like, orders of magnitude slower (as in 100x, 1000x, etc.).  But, it definitely does what it advertises!  Using 10,000,000 iterations, I can successfully get beyond the 12-digit limit of normal number storage.  Unfortunately, it takes over 2 minutes, compared to the less than 2 seconds of the normal version.  
 
