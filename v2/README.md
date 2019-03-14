@@ -1,4 +1,4 @@
-#Version 2: Updated in 2015, in `make_pi_2.c`
+# Version 2: Updated in 2015, in `make_pi_2.c`
 
 I've used this code for 5 years now, and it's always bothered me that the limiting resource is memory space.  Although my original reason for storing all my intermediate results was so that each step in the process was immediately visible, in general, it's not good coding practice to make RAM the limiting component of a program.  Usually, a good operating system will limit the amount of RAM that any single program can request within a short amount of time, and since the amount of RAM we have is pretty much unchangeable on an immediate basis, you want to instead make the limiting factor in any program the amount of time it takes to execute.  
 
@@ -16,11 +16,11 @@ A few other small changes that are noteworthy:  the number of iterations to perf
 
 Next, I added a crude timing feature so that you actually know how much time your computation took.  Finally, you'll notice that the actual calculation was moved into a separate function.  This is because each thread executes a specific function.  When we create multiple processes, each process continues execution precisely where it was split.  Threads, though, only operate out of a single processes, so they're somewhat limited in their capability.  Man, just look at how much more complex this new code is compared to the original!  If that isn't a sign of how much I've grown as a programmer, I don't know what is.
 
-##Version 2.1: Showing Microsoft some love, in `WinPi.cpp`
+## Version 2.1: Showing Microsoft some love, in `WinPi.cpp`
 
 Here is the version for Windows that uses the native Win32 threading API.  Windows is an interesting beast, because it doesn't come with a native C compiler that you can just run from the command line.  You'll need an external one, such as the compiler in Visual Studio.  Copying this code into Visual Studio isn't too big of a deal, and other than changing a few signatures of functions, the code is almost identical to the Linux code.  The biggest thing to worry about is Visual Studio itself:  it will want to do weird things like use Unicode characters, which can screw up your command line arguments if you're not careful (I MAY have spent over an hour trying to figure that one out), so you'll need to make sure you change that in the project settings.
 
-##Version 2.2: Yeah, lots of love, in `Program.cs`
+## Version 2.2: Yeah, lots of love, in `Program.cs`
 
 Now for the exciting part:  more ports!  After porting this to Windows, I thought, "Why stop there?"  We should have some COMPLETELY platform agnostic implementations!  So, I chose two languages that can provide that:  C\# (which you all know is my favorite language for a variety of reasons), and Java (because it was really, really easy to port between it and C\#).  
 
@@ -28,6 +28,6 @@ The biggest difference now, besides having to wrap everything in classes, is tha
 
 To build it, you'll just need to throw it in a new C\# project in Visual Studio (since compiling CLR code from the command line is a little tricky).  But to run it, you can just run it like all the others:  call the name of the program and give it the two expected arguments.  
 
-##Version 2.3: Slightly less love, in `Program.java` and `Calculation.java`
+## Version 2.3: Slightly less love, in `Program.java` and `Calculation.java`
 
 In Java, threads don't have a separate class.  Instead, any class can be an instance of a thread just by extending the base Thread class and overriding the built-in run() function.  This is a very trivial change from C\#, since it also requires a separate class from the main Program class.  Java likes classes in separate files, though, so compilation may require multiple steps.  The good news is that you don't have to create a project in an IDE since you can compile Java from the command line!  What's interesting to see is how Java handles precision error a little differently from the other languages, so the results here might be slightly different than in other languages.  
